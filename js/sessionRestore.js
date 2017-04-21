@@ -23,7 +23,8 @@ var sessionRestore = {
       tasks.setSelected(tasks.add()) // create a new task
 
       var newTab = currentTask.tabs.add({
-        url: 'https://palmeral.github.io/min/tour'
+        url: 'https://secwebapps.github.io/secwebsurf/tour'
+        
       })
       addTab(newTab, {
         enterEditMode: false

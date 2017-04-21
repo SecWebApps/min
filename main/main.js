@@ -82,8 +82,11 @@ function createWindowWithBounds (bounds, shouldMaximize) {
     icon: __dirname + '/icons/icon256.png'
   })
 
+  //mainWindow.webContents.session.setProxy({proxyRules:"socks5://127.0.0.1:9050"}, function () {
   // and load the index.html of the app.
   mainWindow.loadURL(browserPage)
+  //;
+  //});
 
   if (shouldMaximize) {
     mainWindow.maximize()
@@ -426,27 +429,32 @@ function createAppMenu () {
       role: 'help',
       submenu: [
         {
+          label: 'Check tor status',
+          click: function () {
+            openTabInWindow('https://check.torproject.org/')
+          }
+        },{
           label: 'Keyboard Shortcuts',
           click: function () {
-            openTabInWindow('https://github.com/minbrowser/min/wiki#keyboard-shortcuts')
+            openTabInWindow('https://github.com/SecWebApps/min/wiki#keyboard-shortcuts')
           }
         },
         {
           label: 'Report a Bug',
           click: function () {
-            openTabInWindow('https://github.com/minbrowser/min/issues/new')
+            openTabInWindow('https://github.com/SecWebApps/min/issues/new')
           }
         },
         {
           label: 'Take a Tour',
           click: function () {
-            openTabInWindow('https://minbrowser.github.io/min/tour/')
+            openTabInWindow('https://secwebapps.github.io/secwebsurf/tour')
           }
         },
         {
           label: 'View on GitHub',
           click: function () {
-            openTabInWindow('https://github.com/minbrowser/min')
+            openTabInWindow('https://github.com/SecWebApps/min')
           }
         }
       ]

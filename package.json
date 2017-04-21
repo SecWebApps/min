@@ -1,8 +1,8 @@
 {
-  "name": "min",
-  "productName": "Min",
+  "name": "SecWebSurf",
+  "productName": "SecWebSurf",
   "version": "1.5.1",
-  "electronVersion": "1.4.12",
+  "electronVersion": "1.6.2",
   "main": "main.build.js",
   "dependencies": {
     "dexie": "^1.2.0",
@@ -18,7 +18,8 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-electron": "^5.0.0",
     "grunt-electron-installer-debian": "^0.4.0",
-    "standard": "^7.1.0"
+    "standard": "^7.1.0",
+    "grunt-curl": "^2.2.0"
   },
   "license": "Apache-2.0",
   "scripts": {

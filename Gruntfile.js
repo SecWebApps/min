@@ -99,7 +99,7 @@ module.exports = function (grunt) {
 		electron: {
 			osxBuild: {
 				options: {
-					name: 'Min',
+					name: 'SecWebSurf',
 					dir: __dirname,
 					out: 'dist/app',
 					version: electronVersion,
@@ -121,7 +121,7 @@ module.exports = function (grunt) {
 			},
 			windowsBuild: {
 				options: {
-					name: 'Min',
+					name: 'SecWebSurf',
 					dir: __dirname,
 					out: 'dist/app',
 					version: electronVersion,
@@ -135,7 +135,7 @@ module.exports = function (grunt) {
 			},
 			linuxBuild: {
 				options: {
-					name: 'min',
+					name: 'SecWebSurf',
 					dir: __dirname,
 					out: 'dist/app',
 					version: electronVersion,
@@ -150,16 +150,16 @@ module.exports = function (grunt) {
 		},
 		'electron-installer-debian': {
 			options: {
-				productName: "Min",
+				productName: "SecWebSurf",
 				genericName: "Web Browser",
 				version: version,
 				section: "web",
-				homepage: "https://palmeral.github.io/min/",
+				homepage: "https://secwebapps.github.io/secwebsurf",
 				icon: "icons/icon256.png",
 				categories: ["Network", "WebBrowser"],
 				mimeType: ["x-scheme-handler/http", "x-scheme-handler/https", "text/html"],
-				maintainer: "Min Developers <280953907a@zoho.com>",
-				description: "Min is a faster, smarter web browser.",
+				maintainer: "SecWebSurf Developers <SecWebApps@protonmail.com>",
+				description: "SecWebSurf is a faster, smarter web browser.",
 				depends: [
 				'gconf2',
 				'gconf-service',
@@ -180,17 +180,24 @@ module.exports = function (grunt) {
 				options: {
 					arch: 'i386'
 				},
-				src: 'dist/app/Min-linux-ia32',
+				src: 'dist/app/SecWebSurf-linux-ia32',
 				dest: 'dist/app/linux'
 			},
 			linux64: {
 				options: {
 					arch: 'amd64'
 				},
-				src: 'dist/app/Min-linux-x64',
+				src: 'dist/app/SecWebSurf-linux-x64',
 				dest: 'dist/app/linux'
 			}
+		},
+		curl: {
+			tor: {
+			dest: 'dist/tor',
+			src: 'https://www.torproject.org/dist/torbrowser/6.5.1/tor-win32-0.2.9.10.zip'
+			}
 		}
+
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
@@ -202,6 +209,8 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', ['concat:browser', 'uglify:browser', 'concat:webview', 'uglify:webview', 'concat:main']);
 	grunt.registerTask('browser', ['concat:browser', 'uglify:browser']);
 	grunt.registerTask('webview', ['concat:webview', 'uglify:webview']);
+
+	grunt.registerTask('tor', ['curl:tor']);
 
 	grunt.registerTask('macBuild', ['concat:browser', 'uglify:browser', 'concat:webview', 'uglify:webview', 'concat:main', 'electron:osxBuild'])
 	grunt.registerTask('linuxBuild', ['concat:browser', 'uglify:browser', 'concat:webview', 'uglify:webview', 'concat:main', 'electron:linuxBuild', 'electron-installer-debian:linux32', 'electron-installer-debian:linux64'])
